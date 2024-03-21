@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
@@ -25,6 +26,7 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="./static/js/script.js"></script>
 </head>
 <body>
 
@@ -34,7 +36,9 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Gaga: Group Any Gaussians via 3D-aware Memory Bank</h1>
+          <h1 class="title is-1 publication-title">
+            <i>Gaga</i> : Group Any Gaussians via 3D-aware Memory Bank
+          </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://weijielyu.github.io/">Weijie Lyu</a><sup>1</sup>,
@@ -54,9 +58,9 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of California, Merced</span>
-            <span class="author-block"><sup>2</sup>Nvidia Research</span>
-            <span class="author-block"><sup>3</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>University of California, Merced </span>
+            <span class="author-block"><sup>2</sup>Nvidia </span>
+            <span class="author-block"><sup>3</sup>Google </span>
           </div>
 
           <div class="column has-text-centered">
@@ -92,7 +96,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://github.com/weijielyu/Gaga"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -110,7 +114,10 @@
                   <span>Data</span>
                   </a> -->
             </div>
-
+          </div>
+          <!-- Submission status -->
+          <div class="title-row">
+            <span class="title is-4 publication-venue">arXiv 2024</span>
           </div>
         </div>
       </div>
@@ -121,21 +128,28 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser_room.mov"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <p>
-          <strong>Left:</strong> <i>Gaga</i> groups any Gaussians in an open-world 3D scene, renders RGB and multi-view consistent segmentation.
-        </p>
-        <!-- <strong>Left:</strong> <i>Gaga</i> groups any Gaussians in an open-world 3D scene and renders multi-view consistent segmentation. -->
-      <!-- </h2>
-      <h2 class="subtitle has-text-centered"> -->
-        <p>
-          <strong>Right:</strong> <i>Gaga</i> enables open-world scene manipulation. <i>i.e.</i> changing the color of footstool's cushion to <b style="color:#800000">maroon</b> and the color of black carpet to <b style="color:#000080">navy blue</b>; removing the stuffed animal on the sofa.
-        </p>
-      </h2>
+      <div id="image-compare-canvas" class="image-compare" data-before-label="RGB" data-after-label="Segmentation">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="video-bar">
+        <div id="opacity-col" class="base-col viewer-bar">
+            <label class="switch">
+                <input type="checkbox" id="opacity-toggle" checked>
+                <span class="slider"></span>
+                <span class="labels" data-on="EDIT" data-off="RESET"></span>
+            </label>
+            <button id="play-btn" class="video-btn fa fa-pause fa-lg" onclick="play_pause()"></button>
+        </div>
+    </div>
+    </div>
+    <h2 class="subtitle">
+      <p>
+        <i>Gaga</i> groups any Gaussians in an open-world 3D scene, renders multi-view consistent segmentation, and enables scene manipulation.
+      </p>
+      <p>
+        <strong style="color:#8000FF">EDIT</strong>: Change the color of cushion on <img src="static/images/footstool.png" width="58.5"> to <b style="color:#800000">maroon</b> and <img src="static/images/carpet.png" width="87.5"> to <b style="color:#000080">navy blue</b>; remove <img src="static/images/stuffed.png" width="75">
+      </p>
+    </h2>
     </div>
   </div>
 </section>
@@ -362,6 +376,14 @@
     </div>
   </div>
 </footer>
+
+<video id="room" controls="false" loop autoplay muted class="videos" webkit-playsinline playsinline>
+  <source src="static/videos/room.mov" type="video/mp4">
+</video>
+
+<video id="room_edit" controls="false" loop autoplay muted class="videos" webkit-playsinline playsinline>
+  <source src="static/videos/room_edit.mov" type="video/mp4">
+</video>
 
 </body>
 </html>
