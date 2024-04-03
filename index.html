@@ -86,7 +86,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                <a href="https://youtu.be/rqs5BuVFOok"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -128,35 +128,37 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div id="image-compare-canvas" class="image-compare" data-before-label="RGB" data-after-label="Segmentation">
-        <canvas id="canvas"></canvas>
-      </div>
-      <div class="video-bar">
-        <div id="opacity-col" class="base-col viewer-bar">
-            <label class="switch">
-                <input type="checkbox" id="opacity-toggle" checked>
-                <span class="slider"></span>
-                <span class="labels" data-on="EDIT" data-off="RESET"></span>
-            </label>
-            <button id="play-btn" class="video-btn fa fa-pause fa-lg" onclick="play_pause()"></button>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="switcher" data-switcher-title="Select Segmentation Model">
+            <div data-switcher-label="SAM"></div>
+            <div data-switcher-label="EntitySeg"></div>
+          </div>
+          <div id="image-compare-canvas" class="image-compare" data-before-label="RGB" data-after-label="Segmentation">
+            <canvas id="canvas"></canvas>
+          </div>
+          <div class="video-bar base-row">
+            <button id="play-btn" class="video-btn fa fa-lg fa-pause" onclick="play_pause()" style="margin-right: 0px;"></button>
+          </div>
         </div>
-    </div>
+      </div>
     </div>
     <h2 class="subtitle">
       <p>
-        <i>Gaga</i> groups any Gaussians in an open-world 3D scene, renders multi-view consistent segmentation, and enables scene manipulation.
+        <i>Gaga</i> groups any Gaussians in an open-world 3D scene and renders multi-view consistent segmentation.
+        We show 3D segmentation rendering results leveraging different 2D segmentation models, Segment Anything (SAM) and EntitySeg.
       </p>
-      <p>
-        <strong style="color:#8000FF">EDIT</strong>: Change the color of cushion on <img src="static/images/footstool.png" width="58.5"> to <b style="color:#800000">maroon</b> and <img src="static/images/carpet.png" width="87.5"> to <b style="color:#000080">navy blue</b>; remove <img src="static/images/stuffed.png" width="75">
-      </p>
+      <!-- <p>
+        <strong style="color:hsl(204, 86%, 53%)">EDIT</strong>: Change the color of cushion on <img src="static/images/footstool.png" width="58.5"> to <b style="color:#800000">maroon</b> and <img src="static/images/carpet.png" width="87.5"> to <b style="color:#000080">navy blue</b>; remove <img src="static/images/stuffed.png" width="75">
+      </p> -->
     </h2>
     </div>
   </div>
 </section>
 
+<!-- Abstract. -->
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
@@ -178,36 +180,94 @@
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
+  </div>
+</section>
+<!--/ Abstract. -->
 
-    <!-- Paper video. -->
+<!-- Paper video. -->
+<section class="section">
+  <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+          <iframe src="https://www.youtube.com/embed/rqs5BuVFOok?rel=0&amp;showinfo=0"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
     </div>
-    <!--/ Paper video. -->
   </div>
 </section>
+<!--/ Paper video. -->
 
 <section class="section">
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3 has-text-centered">Gallery</h2>
-          <h3 class="title is-4">Comparison Results</h3>
-          <h3 class="title is-4">Gaga 🤝 SAM</h3>
-          <h3 class="title is-4">Gaga 🤝 EntitySeg</h3>
-          <h3 class="title is-4">Scene Manipulation</h3>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <img src="static/images/overview.png" width="100%">
+            </div>
+          </div>
+          <p>
+            <strong>Overview of <i>Gaga</i>.</strong> <i>Gaga</i> reconstructs 3D scenes with Gaussian Splatting and
+            adopts an open-world model to generate 2D segmentation masks. To eliminate the 2D
+            mask label inconsistency, we design the 3D-aware mask association process, where a 3D-aware
+            memory bank is employed to assign a consistent group ID across different views to
+            each 2D mask based on the 3D Gaussians projected to that mask. Specifically,
+            we find the corresponding Gaussians projected to each 2D mask and assign the mask
+            with the group ID in the memory bank with the maximum overlapped Gaussians.
+            After the 3D-aware mask association process, we use masks with multi-view
+            consistent group IDs as pseudo labels to train an identity encoding on each 3D Gaussian
+            for segmentation rendering.
+          </p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<!-- / Method-->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Gallery</h2>
+        <h3 class="title is-4">Comparison Results</h3>
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">RGB</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">Gaussian Grouping</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080"><i>Gaga</i></b></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/counter_entity.mov" type="video/mp4">
+        </video>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/room_entity.mov" type="video/mp4">
+        </video>
+
+        <h3 class="title is-4"><i>Gaga</i> 🤝 SAM</h3>
+        <h3 class="title is-4"><i>Gaga</i> 🤝 EntitySeg</h3>
+        <h3 class="title is-4">Scene Manipulation</h3>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- <section class="section">
@@ -346,7 +406,7 @@
 </section> -->
 
 
-<!-- <section class="section" id="BibTeX">
+<section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{park2021nerfies,
@@ -356,7 +416,7 @@
   year      = {2021},
 }</code></pre>
   </div>
-</section> -->
+</section>
 
 
 <footer class="footer">
@@ -374,7 +434,7 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            Website template from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            Website template from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and <a href="https://github.com/chungmin99/garfield-website">GARField</a>.
           </p>
         </div>
       </div>
@@ -382,12 +442,8 @@
   </div>
 </footer>
 
-<video id="room" controls="false" loop autoplay muted class="videos" webkit-playsinline playsinline>
-  <source src="static/videos/room.mov" type="video/mp4">
-</video>
-
-<video id="room_edit" controls="false" loop autoplay muted class="videos" webkit-playsinline playsinline>
-  <source src="static/videos/room_edit.mov" type="video/mp4">
+<video id="teaser" controls="false" loop autoplay muted class="videos" webkit-playsinline playsinline>
+  <source src="static/videos/teaser.mov" type="video/mp4">
 </video>
 
 </body>
