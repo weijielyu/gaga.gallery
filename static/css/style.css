@@ -144,7 +144,7 @@
   cursor: pointer;
   padding: 0 0.3em;
   color: #000;
-  font-size: 16px;
+  font-size: 20px;
 }
 .switcher .switcher-labels label.switcher-hidden {
   opacity: 0.3;
