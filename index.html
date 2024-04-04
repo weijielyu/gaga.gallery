@@ -164,7 +164,8 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We introduce <i>Gaga</i>, a framework that reconstructs and segments open-world 3D scenes 
+            We introduce <i>Gaga</i>, a framework that <b style="color:hsl(204, 86%, 53%)">reconstructs</b> 
+            and <b style="color:hsl(204, 86%, 53%)">segments</b> open-world 3D scenes 
             by leveraging inconsistent 2D masks predicted by zero-shot segmentation models. Contrasted 
             to prior 3D scene segmentation approaches that heavily rely on video object tracking, 
             <i>Gaga</i> utilizes spatial information and effectively associates object masks across diverse camera 
@@ -214,8 +215,9 @@
           <p>
             <strong>Overview of <i>Gaga</i>.</strong> <i>Gaga</i> reconstructs 3D scenes with Gaussian Splatting and
             adopts an open-world model to generate 2D segmentation masks. To eliminate the 2D
-            mask label inconsistency, we design the 3D-aware mask association process, where a 3D-aware
-            memory bank is employed to assign a consistent group ID across different views to
+            mask label inconsistency, we design the <b style="color:hsl(204, 86%, 53%)">3D-aware mask association</b> process, 
+            where a 3D-aware memory bank is employed to 
+            assign a consistent group ID across different views to
             each 2D mask based on the 3D Gaussians projected to that mask. Specifically,
             we find the corresponding Gaussians projected to each 2D mask and assign the mask
             with the group ID in the memory bank with the maximum overlapped Gaussians.
@@ -235,7 +237,12 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3 has-text-centered">Gallery</h2>
-        <h3 class="title is-4">🗺️ Open-world 3D Segmentation</h3>
+        <h3 class="title is-4 has-text-centered">🗺️ Open-world 3D Segmentation</h3>
+        <p>
+          <i>Gaga</i> accommodates well with diverse open-world 2D segmentation models.
+        </p>
+        <h4 class="title is-5"></h4>
+        <h4 class="title is-5">🤝 EntitySeg</h4>
         <div class="container is-max-desktop">
           <div class="columns is-centered">
             <div class="column">
@@ -258,28 +265,129 @@
         <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
           <source src="./static/videos/kitchen_entity.mov" type="video/mp4">
         </video>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/room_entity.mov" type="video/mp4">
-        </video>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+        <!-- <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
           <source src="./static/videos/counter_entity.mov" type="video/mp4">
+        </video> -->
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/room_0_entity.mov" type="video/mp4">
         </video>
+        <!-- <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/room_2_entity.mov" type="video/mp4">
+        </video> -->
+        <h4 class="title is-5"></h4>
+        <h4 class="title is-5">🤝 SAM</h4>
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">RGB</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">Gaussian Grouping</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080"><i>Gaga</i></b></h4>
+              </div>
+            </div>
+          </div>
+        </div>
         <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
           <source src="./static/videos/office_0_sam.mov" type="video/mp4">
         </video>
         <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/room_0_entity.mov" type="video/mp4">
-        </video>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/room_2_entity.mov" type="video/mp4">
-        </video>
-        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/192_entity.mov" type="video/mp4">
+          <source src="./static/videos/counter_sam.mov" type="video/mp4">
         </video>
         <h3 class="title is-4"></h3>
-        <h3 class="title is-4">🖌️ Scene Manipulation</h3>
+        <h3 class="title is-4 has-text-centered">❓ Why 3D-aware</h3>
+        <p>
+          <i>Gaga</i> integrates spatial information to precisely locate objects and associate 2D masks, 
+          leading to multi-view consistent segmentation. 
+          While previous method without 3D-awareness struggles when encounter following scenarios:
+        </p>
+        <h4 class="title is-5"></h4>
+        <h4 class="title is-5">👯 Similar objects present in the scene</h4>
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">RGB</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">Gaussian Grouping</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080"><i>Gaga</i></b></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/scene_192_entity.mov" type="video/mp4">
+        </video>
+        <h4 class="title is-5"></h4>
+        <h4 class="title is-5">📷 Camera poses change significantly</h4>
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">RGB</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">Gaussian Grouping</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080"><i>Gaga</i></b></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/room_entity.mov" type="video/mp4">
+        </video>
+        <h4 class="title is-5"></h4>
+        <h4 class="title is-5">😭 Only limited images are avaiable</h4>
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">RGB</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080">Gaussian Grouping</b></h4>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <h4 class="title is-5 is-centered has-text-centered"><b style="color:#808080"><i>Gaga</i></b></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/office_0_sam_sparse.mov" type="video/mp4">
+        </video>
+        <h3 class="title is-4"></h3>
+        <h3 class="title is-4 has-text-centered">🪄 Scene Manipulation</h3>
+        <p>
+          <i>Gaga</i> achieves high-quality and multi-view consistent 3D segmentation, enables tasks like scene manipulation.
+        </p>
+        <h4 class="title is-5"></h4>
         <h4 class="title is-5">
-          Change the color of cushion on <img src="static/images/footstool.png" width="75"> to <b style="color:#800000">maroon</b>; remove <img src="static/images/stuffed.png" width="75">.
+          ✨ Change the color of cushion on <img src="static/images/footstool.png" width="75"> to <b style="color:#800000">maroon</b>; remove <img src="static/images/stuffed.png" width="75">
         </h4>
         <div class="container is-max-desktop">
           <div class="columns is-centered">
@@ -306,7 +414,7 @@
         </h4>
         <h4 class="title is-5"></h4>
         <h4 class="title is-5">
-          Move <img src="static/images/armchair.png" width="75"> closer to the window.
+          ✨ Move <img src="static/images/armchair.png" width="75"> closer to the window
         </h4>
         <div class="container is-max-desktop">
           <div class="columns is-centered">
