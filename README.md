@@ -2,6 +2,6 @@
 
 Project Page: [gaga.gallery](https://www.gaga.gallery/)
 
-Thanks to the following awesome template:
+Thanks to the following awesome templates:
 - [Nerfies](https://nerfies.github.io)
 - [GARField](https://www.garfield.studio)
