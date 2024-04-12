@@ -1,3 +1,7 @@
-# *Gaga*: Group Any Gaussians via 3D-aware Memory Bank
+# *Gaga* : Group Any Gaussians via 3D-aware Memory Bank
 
-Official Website
+Project Page: [gaga.gallery](https://www.gaga.gallery/)
+
+Thanks to the following awesome template:
+- [Nerfies](https://nerfies.github.io)
+- [GARField](https://www.garfield.studio)
